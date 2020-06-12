@@ -1,279 +1,40 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>LED Keyboard</title>
-
-<style>
-body {
-  background-color: #625499;
-  display: table-cell;
-  height: 100vh;
-  margin: 0;
-  text-align: center;
-  vertical-align: middle;
-  width: 100vw;
-}
-
-.case {
-  background-color: #463973;
-  border-color: #2e2640;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 8px 10px 15px 10px;
-  display: inline-grid;
-  grid-template-columns: repeat(36, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  height: 17em;
-  padding: 5px;
-  user-select: none;
-  width: 60em;
-}
-
-.key {
-  border-color: #382e59 #2e2640;
-  border-radius: 2px;
-  border-style: solid;
-  border-width: 3px 5px 8px 5px;
-  color: #bbadd9;
-  display: block;
-  font-family: sans-serif;
-  font-size: 9px;
-  font-weight: 800;
-  grid-column-end: span 2;
-  margin: 3px;
-  padding-top: 2px;
-  padding: 5px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: all 50ms ease-out;
-  will-change: box-shadow, color, text-shadow;
-}
-
-.key:empty::before {
-  content: attr(data-key);
-}
-
-.active {
-  transform: perspective(1200px) translateZ(-90px);
-}
-
-.medium {
-  grid-column-end: span 3;
-}
-
-.large {
-  grid-column-end: span 4;
-}
-
-.xl {
-  grid-column-end: span 5;
-}
-
-.xxl {
-  grid-column-end: span 6;
-}
-
-.xxxl {
-  grid-column-end: 7;
-}
-
-.huge {
-  grid-column-end: span 12;
-}
-</style>
-</head>
-<body>
-<div class="case">
-  <!-- First row -->
-  <div class="key" data-key="escape">esc</div>
-  <div class="key" data-key="1"></div>
-  <div class="key" data-key="2"></div>
-  <div class="key" data-key="3"></div>
-  <div class="key" data-key="4"></div>
-  <div class="key" data-key="5"></div>
-  <div class="key" data-key="6"></div>
-  <div class="key" data-key="7"></div>
-  <div class="key" data-key="8"></div>
-  <div class="key" data-key="9"></div>
-  <div class="key" data-key="0"></div>
-  <div class="key" data-key="-"></div>
-  <div class="key" data-key="="></div>
-  <div class="key xxl" data-key="backspace"></div>
-  <div class="key" data-key="help">ins</div>
-  <div class="key" data-key="home"></div>
-  <!-- Second row -->
-  <div class="key large" data-key="tab"></div>
-  <div class="key" data-key="q"></div>
-  <div class="key" data-key="w"></div>
-  <div class="key" data-key="e"></div>
-  <div class="key" data-key="r"></div>
-  <div class="key" data-key="t"></div>
-  <div class="key" data-key="y"></div>
-  <div class="key" data-key="u"></div>
-  <div class="key" data-key="i"></div>
-  <div class="key" data-key="o"></div>
-  <div class="key" data-key="p"></div>
-  <div class="key" data-key="["></div>
-  <div class="key" data-key="]"></div>
-  <div class="key large" data-key="\"></div>
-  <div class="key" data-key="delete">del</div>
-  <div class="key" data-key="end"></div>
-  <!-- Third row -->
-  <div class="key xl" data-key="capslock">caps</div>
-  <div class="key" data-key="a"></div>
-  <div class="key" data-key="s"></div>
-  <div class="key" data-key="d"></div>
-  <div class="key" data-key="f"></div>
-  <div class="key" data-key="g"></div>
-  <div class="key" data-key="h"></div>
-  <div class="key" data-key="j"></div>
-  <div class="key" data-key="k"></div>
-  <div class="key" data-key="l"></div>
-  <div class="key" data-key=";"></div>
-  <div class="key" data-key="'"></div>
-  <div class="key xl" data-key="enter">return</div>
-  <div class="key" data-key="f15">pause</div>
-  <div class="key" data-key="pageup">pg up</div>
-  <!-- Fourth row -->
-  <div class="key xxl" data-key="shiftleft">shift</div>
-  <div class="key" data-key="z"></div>
-  <div class="key" data-key="x"></div>
-  <div class="key" data-key="c"></div>
-  <div class="key" data-key="v"></div>
-  <div class="key" data-key="b"></div>
-  <div class="key" data-key="n"></div>
-  <div class="key" data-key="m"></div>
-  <div class="key" data-key=","></div>
-  <div class="key" data-key="."></div>
-  <div class="key" data-key=""></div>
-  <div class="key xxl" data-key="shiftright">shift</div>
-  <div class="key" data-key="arrowup">��</div>
-  <div class="key" data-key="pagedown">pg dn</div>
-  <!-- Fifth row -->
-  <div class="key medium" data-key="controlleft">ctrl</div>
-  <div class="key medium" data-key="meta">win</div>
-  <div class="key medium" data-key="altleft">alt</div>
-  <div class="key huge" data-key=" "></div>
-  <div class="key medium" data-key="altright">alt</div>
-  <div class="key medium" data-key="fn"></div>
-  <div class="key medium" data-key="controlright">ctrl</div>
-  <div class="key" data-key="arrowleft">��</div>
-  <div class="key" data-key="arrowdown">��</div> 
-  <div class="key" data-key="arrowright">��</div>
-</div>
-
-<script>
-const keysArr = [...document.querySelectorAll(".key")];
-
-const getKey = (event) => {
-  const parsedKey = event.key.toLowerCase().replace("\\", "\\\\");
-  const parsedCode = event.code.toLowerCase();
-  const element =
-    document.querySelector(`[data-key="${parsedCode}"]`) ||
-    document.querySelector(`[data-key="${parsedKey}"]`);
-
-  return element;
-};
-
-const getEvent = () => {};
-
-document.addEventListener("keydown", (event) => {
-  const key = getKey(event);
-  if (key) {
-    key.classList.add("active");
-  }
-});
-
-document.addEventListener("keyup", (event) => {
-  const key = getKey(event);
-  if (key) {
-    key.classList.remove("active");
-  }
-});
-
-document.addEventListener("mousedown", (event) => {
-  if (event.target.dataset.key) {
-    event.target.classList.add("active");
-  }
-});
-
-document.addEventListener("mouseup", (event) => {
-  if (event.target.dataset.key) {
-    event.target.classList.remove("active");
-  }
-});
-
-document.addEventListener("touchstart", (event) => {
-  if (event.target.dataset.key) {
-    event.target.classList.add("active");
-  }
-});
-
-document.addEventListener("touchend", (event) => {
-  if (event.target.dataset.key) {
-    event.target.classList.remove("active");
-  }
-});
-
-const animate = (element) => {
-  const hueColor = Math.floor(Math.random() * (360 - 0 + 1)) + 0;
-  const color = `hsla(${hueColor}, 100%, 50%, 50%)`;
-  const textColor = `hsl(${hueColor}, 100%, 50%)`;
-  const textShadow = `0 0 0.80em ${color}, 0 0 1.60em ${color}, 0 0 4em ${color}`;
-  const boxShadow = `-3px 3px 4px ${color}, 3px -3px 4px ${color}, 3px 3px 4px ${color}, -3px -3px 4px ${color}, 0 0 10px ${color}`;
-
-  const keyIndex = keysArr.indexOf(element);
-  const animatedKeysRight = keysArr.slice(keyIndex);
-  const animatedKeysLeft = keysArr.slice(0, keyIndex);
-
-  const transitionHandler = (event) => {
-    event.target.style.boxShadow = "none";
-    event.target.style.color = null;
-    event.target.style.textShadow = "none";
-    event.target.removeEventListener("transitionend", transitionHandler);
-  };
-
-  animatedKeysRight.forEach((keyEl, i) => {
-    setTimeout(() => {
-      keyEl.addEventListener("transitionend", transitionHandler);
-      keyEl.style.boxShadow = boxShadow;
-      keyEl.style.color = textColor;
-      keyEl.style.textShadow = textShadow;
-    }, i * 35);
-  });
-
-  animatedKeysLeft.forEach((keyEl, j) => {
-    const i = animatedKeysLeft.length - j;
-    setTimeout(() => {
-      keyEl.addEventListener("transitionend", transitionHandler);
-      keyEl.style.boxShadow = boxShadow;
-      keyEl.style.color = textColor;
-      keyEl.style.textShadow = textShadow;
-    }, i * 35);
-  });
-};
-
-document.addEventListener("keydown", (event) => {
-  const key = getKey(event);
-
-  if (key) {
-    animate(key);
-  }
-});
-
-document.addEventListener("click", (event) => {
-  if (event.target.dataset.key) {
-    animate(event.target);
-  }
-});
-
-window.addEventListener("load", () => {
-  const key = document.querySelector(`[data-key="enter"]`);
-  animate(key);
-});
-</script>
-
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>TEST</title>
+	</head>
+	<body style="background-color: #000000;">
+		<div align="center" style="margin-top: 35px;">
+			<img src="images/1_03.png"/>
+			<div style="height: 35px;"></div>
+			<img src="images/1_07.jpg" />
+		</div>
+		<div style="color: white;" align="center">
+			<h1>个人介绍</h1>
+			<hr style="height:1px;border:none;border-top:1px solid #555555; width: 1800px;" />  
+			<div style="background-color: white; color: #000000; margin: 52px; font-size: large;" align="left">
+				 性格开朗，容易相处，在工作中与同事相处都很融洽。有较强的的责任感和团队精神，有良好的抗压能力。对UI设计有很大的兴趣并有较强学习的能力，不断接受新的设计理念，研究各种设计风格。对待工作，精益求精，追求一丝不苟，遇到问题，快速变通思维，耐心寻找解决方法，认真的做好每一件小事，踏实努力，保持一颗平常心。
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #555555; width: 1800px;" />   
+		</div>
+		<div style="color: white;" align="center">
+					<h1>个人技能</h1>
+					<hr style="height:1px;border:none;border-top:1px solid #555555; width: 1800px;" />   
+					<div style="background-color: white; color: #000000; margin: 52px; font-size: large;" align="left" >
+						 擅长字体设计（钢笔造字、画字、拼字等）、logo设计banner设计及广告合成、调色（色阶、曲线、饱和度、色彩平衡）等方面。精通logo设计，掌握VI手册制作(标准字制作等)人物精修、电商广告制作
+					</div>
+					<hr style="height:1px;border:none;border-top:1px solid #555555; width: 1800px;" />   
+				</div>
+		<div style="color: white; margin: 52px;" align="center">
+					<h1>个人作品</h1>
+					
+					<div style="margin-top: 52px;">
+					<img src="images/4.png"  width="1797px"/>
+					</div>
+				</div>
+			<div style="background-color: darkgray; height: 500px; margin-top: 100px;">
+				
+			</div>
+	</body>
 </html>
